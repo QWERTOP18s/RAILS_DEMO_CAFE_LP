@@ -7,12 +7,13 @@ AllCops:
   TargetRubyVersion: 3.2
   Exclude:
     - "db/**/*"
-    - "config/**/*"
+    # - "config/**/*"
     - "script/**/*"
     - "bin/**/*"
     - "vendor/**/*"
     - "tmp/**/*"
     - "node_modules/**/*"
+
   # 自動修正を有効化
   AutoCorrect: true
   # セーフモードを無効化（より積極的な自動修正を許可）
