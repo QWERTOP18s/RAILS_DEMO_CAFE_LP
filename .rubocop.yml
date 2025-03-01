@@ -1,0 +1,88 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  Exclude:
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - "node_modules/**/*"
+  # 自動修正を有効化
+  AutoCorrect: true
+  # セーフモードを無効化（より積極的な自動修正を許可）
+  SafeAutoCorrect: false
+
+# 日本語のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# クラスのコメント必須を無効化
+Style/Documentation:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 文字リテラルのイミュータブル宣言を無効化
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# メソッドの行数制限を緩和
+Metrics/MethodLength:
+  Max: 20
+
+# ブロックの行数制限を緩和
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+
+# ABCサイズを緩和
+Metrics/AbcSize:
+  Max: 30
+
+# 循環的複雑度を緩和
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# 行の長さを制限
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "test/**/*"
+    - "spec/**/*"
+
+# 引数の数を制限
+Metrics/ParameterLists:
+  Max: 5
+
+# 条件分岐の複雑さを制限
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# 空メソッドの記述スタイル
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# hashの最後のカンマを許可
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# 配列の最後のカンマを許可
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# シンボル配列の記法指定
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# 文字列配列の記法指定
+Style/WordArray:
+  EnforcedStyle: brackets
