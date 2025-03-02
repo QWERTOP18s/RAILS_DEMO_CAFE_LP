@@ -1,0 +1,14 @@
+<div class="category-title">
+  <h2><%= products.first.category %></h2>
+</div>
+<ul>
+  <% products.each do |product| %>
+    <li>
+      <div class="product-card">
+        <%# hoverでdescriptionが下半分に現れる。clickでeditへ %>
+        <%= link_to image_tag(product.ref, alt: product.name, class: "product-image"), "#" %>
+        <%= product.name %>
+      </div>
+    </li>
+  <% end %>
+</ul>

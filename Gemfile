@@ -10,6 +10,7 @@ gem 'bootstrap-sass',             '3.4.1'
 gem 'bootstrap-will_paginate',    '1.0.0'
 gem 'concurrent-ruby', '1.3.4'
 gem 'faker', '2.21.0'
+gem 'font-awesome-sass'
 gem 'htmlbeautifier', require: false
 gem 'image_processing', '1.12.2'
 gem 'importmap-rails', '1.1.5'

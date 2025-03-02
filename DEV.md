@@ -10,6 +10,7 @@ blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面�
 
 ## やりたいこと
 
+- レスポンシブ対応 sidebar<->hamburger
 - blender で商品のモデル作成
 - three.js による埋め込み
 - blender で店の model を作成
@@ -17,7 +18,12 @@ blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面�
 - User の実装
 - rails --api
 
-## March 2nd 🌸
+## 参考サイト
+
+- [https://www.tullys.co.jp/](tullys)
+- [https://www.starbucks.co.jp/](starbacks)
+
+## March 1st 🌸
 
 ```sh
 bundle exec rails _7.0.4.3_ new cafe_lp
@@ -57,6 +63,10 @@ test がいい感じになる library
 ```sh
 bin/rails generate controller static-pages home about
 bin/rails generate model Product uid:string name:string cost:decimal price:decimal ref:string description:text category:string
+
+#
+bin/rails generate migration add_unique_index_to_products_uid
+bin/rails db:migrate
 ```
 
 validate で小数の精度を要求する場合。
@@ -68,3 +78,27 @@ uid の作成方法
 require 'securerandom'
 uid = SecureRandom.uuid
 ```
+
+title は SEO 対策につけておいた方が良さそう
+
+```css
+object-fit: cover; /* 縦横比を保ちながら、親要素に合わせてトリミング */
+```
+
+## icon
+
+```sh
+# Gemfile
+gem 'font-awesome-sass'
+
+#custom.scss
+@import "font-awesome";
+```
+
+## March 2nd 🍡
+
+header の css を当てる developer tool をもっと有効活用したら、楽に作業できそう。
+`width: 100%;`を当てていないから flex-end などの挙動がおかしかった。
+`⌥ ⌘　T`close other window がかなり便利
+
+`⇧ ⌘ T`で tab 復元

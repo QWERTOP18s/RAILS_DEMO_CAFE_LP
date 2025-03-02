@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  uid: MyString
-  name: MyString
-  cost: 9.99
-  price: 9.99
+  uid: uuid1
+  name: coffee
+  cost: 100
+  price: 400
   ref: MyString
-  description: MyText
-  category: MyString
+  description: "assets/images/coffee.jpg"
+  category: drink
 
 two:
-  uid: MyString
-  name: MyString
-  cost: 9.99
-  price: 9.99
-  ref: MyString
-  description: MyText
-  category: MyString
+  uid: uuid2
+  name: cafe-au-lait
+  cost: 300
+  price: 500
+  ref: "assets/images/cafe-au-lait.jpg"
+  description: Text
+  category: drink
