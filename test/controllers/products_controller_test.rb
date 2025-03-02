@@ -7,7 +7,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
-    get product_path(products(:one))
+    get product_path(products(:valid_product))
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    get edit_product_path(products(:one))
+    get edit_product_path(products(:valid_product))
     assert_response :success
   end
 end

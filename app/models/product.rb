@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   # validates :ref, presence: true
   validates :ref,
-            content_type: { in: %w[image/png image/jpg image/jpeg image/gif image/webp],
+            content_type: { in: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'image/webp'],
                             message: I18n.t('errors.messages.invalid_image_format'), },
 
             size: { less_than: 5.megabytes,

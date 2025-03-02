@@ -2,7 +2,7 @@ require 'test_helper'
 require 'securerandom'
 class ProductTest < ActiveSupport::TestCase
   def setup
-    @product = Product.new(uid: SecureRandom.uuid, name: 'Test Product', cost: 100, price: 150, category: 'Test Category')
+    @product = Product.new(uid: SecureRandom.uuid, name: 'Test Product', cost: 100, price: 150, category: 'Test Category', description: 'Test Description')
   end
 
   test 'should be valid' do
@@ -47,5 +47,20 @@ class ProductTest < ActiveSupport::TestCase
     duplicate_product = @product.dup
     @product.save
     assert_not duplicate_product.valid?
+  end
+
+  test 'description should be present' do
+    @product.description = '     '
+    assert_not @product.valid?
+  end
+
+  test 'ref should be valid' do
+    @product.ref.attach(io: Rails.root.join('test/fixtures/files/test.jpeg').open, filename: 'test.jpeg', content_type: 'image/jpeg')
+    assert @product.valid?
+  end
+
+  test 'ref should be invalid' do
+    @product.ref.attach(io: Rails.root.join('test/fixtures/files/invalid_file_ex.pdf').open, filename: 'invalid_file_ex.pdf', content_type: 'application/pdf')
+    assert_not @product.valid?
   end
 end

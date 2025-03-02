@@ -206,3 +206,17 @@ has_one_attached :ref
 
 image の seed を作るのに時間がかかった。jpeg の中の拡張子が違くて validation に引っかかってしまっていたため変な挙動になっていた。
 `in: %w[image/png image/jpg image/jpeg image/gif image/webp]`webp も追加するようにした。
+
+## integration test
+
+```sh
+bin/rails generate integration_test product_new
+bin/rails generate integration_test product_edit
+bin/rails generate integration_test product_delete
+```
+
+| アクション  | HTTP メソッド | 確認方法                                                 |
+| ----------- | ------------- | -------------------------------------------------------- |
+| new/create  | POST          | assert_difference 'Product.count'で個数の変化を確認      |
+| edit/update | PATCH         | assert_equal @product.reload.属性名で更新後の値を確認    |
+| destroy     | DELETE        | assert_difference 'Product.count', -1 で個数の減少を確認 |

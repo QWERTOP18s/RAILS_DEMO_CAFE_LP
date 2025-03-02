@@ -1,19 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  uid: uuid1
-  name: coffee
-  cost: 100
-  price: 400
-  ref: "blend-coffee.jpeg"
-  description: Text
-  category: drink
+valid_product:
+  uid: <%= SecureRandom.uuid %>
+  name: "Test Product"
+  category: "drink"
+  price: 100
+  cost: 50
+  description: "Test Description"
 
 two:
   uid: uuid2
   name: pancake
   cost: 300
   price: 500
-  # ref: "pancake.jpeg"
   description: Text
   category: meal
