@@ -1,0 +1,24 @@
+/* footer */
+
+footer {
+  margin-top: 100px;
+  background-image: url("footer_bg.jpeg");
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+  padding: 20px 40px;
+}
+
+.footer-container ul {
+  list-style: none;
+}
+
+.footer-container li {
+  /* 多分意味ない　*/
+  text-align: center;
+}

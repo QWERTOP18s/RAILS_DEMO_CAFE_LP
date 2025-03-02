@@ -1,0 +1,6 @@
+<% provide(:title, "Home") %>
+<div class="product-list">
+  <%= render "shared/products", products: @drinks %>
+  <%= render "shared/products", products: @meals %>
+  <%= render "shared/products", products: @etc %>
+</div>

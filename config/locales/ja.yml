@@ -1,0 +1,5 @@
+ja:
+  errors:
+    messages:
+      invalid_image_format: "有効な画像形式を指定してください"
+      image_too_large: "ファイルサイズは5MB以下にしてください"

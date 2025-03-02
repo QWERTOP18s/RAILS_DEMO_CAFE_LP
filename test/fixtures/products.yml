@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid_product:
+  uid: <%= SecureRandom.uuid %>
+  name: "Test Product"
+  category: "drink"
+  price: 100
+  cost: 50
+  description: "Test Description"
+
+two:
+  uid: uuid2
+  name: pancake
+  cost: 300
+  price: 500
+  description: Text
+  category: meal

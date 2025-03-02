@@ -1,0 +1,11 @@
+.category-title {
+  display: flex;
+  padding-left: 7%;
+
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+}
+
+.category-title h2 {
+  font-size: 40px;
+}

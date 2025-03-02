@@ -1,0 +1,24 @@
+<% provide(:title, "edit") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @product do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <i class="fa fa-pen"></i>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :cost %>
+      <%= f.number_field :cost, class: 'form-control', min: 1 %>
+      <%= f.label :price %>
+      <%= f.number_field :price, class: 'form-control' , min:1 %>
+      <%= f.label :category %>
+      <%= f.select :category, %w[drink meal etc].map , {}, class: 'form-control' %>
+      <%= f.label :description %>
+      <i class="fa fa-pen"></i>
+      <%= f.text_area :description, class: 'form-control' %>
+      <%= f.submit "Edit Product", class: "btn btn-primary" %>
+      <span class="image">
+        <%= f.file_field :ref , accept: "image/jpeg,image/gif,image/png" %>
+      </span>
+    <% end %>
+  </div>
+</div>

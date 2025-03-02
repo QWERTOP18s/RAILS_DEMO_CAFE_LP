@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.page-title {
+  background-color: mintcream;
+  width: 100%;
+  /* height: 100px; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: "Oxygen", sans-serif;
+  padding: 5px 60px;
+}
+
+/* .page-title h1 {
+  padding-left: 20%;
+} */

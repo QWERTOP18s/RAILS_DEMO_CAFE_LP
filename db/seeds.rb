@@ -1,7 +1,54 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'securerandom'
+
+drinkNames = %w[blend-coffee cafe-au-lait espresso nonexsist]
+mealNames = %w[croissant pancake bagle]
+
+def getRefPath(name)
+  Rails.root.join("public/product_refs/#{name}.jpeg")
+end
+
+def attachRef(product, name)
+  path = getRefPath(name)
+  if File.exist?(path)
+    product.ref.attach(io: File.open(path), filename: "#{name}.jpeg", content_type: "image/jpeg")
+    puts "Attached #{name}.jpeg to #{product.name}"
+  else
+    puts "Warning: #{name}.jpeg not found in public/product_refs/"
+  end
+end
+
+drinkNames.each do |name|
+  p = Product.create!(
+    uid: SecureRandom.uuid,
+    name: name,
+    cost: 100,
+    price: 400,
+    description: "drink",
+    category: "drink",
+  )
+  attachRef(p, name)
+end
+
+mealNames.each do |name|
+  p = Product.create!(
+    uid: SecureRandom.uuid,
+    name:name,
+    cost: 500,
+    price: 1000,
+    description: "meal",
+    category: "meal",
+  )
+  attachRef(p, name)
+end
+
+Product.create!(
+  uid: SecureRandom.uuid,
+  name: "nosrc",
+  cost: 1000,
+  price: 1000,
+  description: "no reference",
+  category: "meal",
+)
+
+
+
