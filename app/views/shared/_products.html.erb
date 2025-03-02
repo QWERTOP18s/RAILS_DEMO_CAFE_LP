@@ -8,10 +8,13 @@
 <ul>
   <% products.each do |product| %>
     <li>
-      <%= link_to product_path(product), class: "product-card" do %>>
+      <%= link_to product_path(product), class: "product-card" do %>
         <%# hoverでdescriptionが下半分に現れる。clickでeditへ %>
         <%# <%= link_to image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image"), product_path(product) %>
-        <%= image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image") %>
+        <%# <%= image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image") %>
+        <% if product.ref.attached? %>
+          <%= image_tag product.ref.variant(resize_to_limit: [500, 500]), alt: product.name, class: "product-image" %>
+        <% end %>
         <p class="product-name">
           <%= product.name %>
         </p>

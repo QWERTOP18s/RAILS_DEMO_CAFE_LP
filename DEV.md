@@ -70,7 +70,7 @@ test がいい感じになる library
 bin/rails generate controller static-pages home about
 bin/rails generate model Product uid:string name:string cost:decimal price:decimal ref:string description:text category:string
 
-#
+# uidをつけたら警告が出たので
 bin/rails generate migration add_unique_index_to_products_uid
 bin/rails db:migrate
 ```
@@ -83,6 +83,14 @@ uid の作成方法
 ```rb
 require 'securerandom'
 uid = SecureRandom.uuid
+```
+
+create するときに割り当てることを忘れずに
+
+```rb
+def create
+  @product.uid ||= SecureRandom.uuid
+end
 ```
 
 title は SEO 対策につけておいた方が良さそう
@@ -144,3 +152,57 @@ Uncaught TypeError: Failed to resolve module specifier "controllers". Relative r
 `app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
 
 product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの width を 31％に拘らなければ、もっと簡単に書ける気がする。
+
+午後にやりたいこと
+
+- page-title background-color は文字の上半分だけかぶるようにしたい
+- ~~edit の実装~~
+- ~~img の埋め込み~~
+- minitest を書く
+
+再開。少し tutorial を読んでいた、vscode 色々といじっていたら erb にカラーが適用されなくなってしまった。
+
+```sh
+ POST http://127.0.0.1:3000/products 422 (Unprocessable Entity)
+ #422 (Unprocessable Entity) は、リクエスト自体はサーバーに到達したものの、バリデーションエラーなどの理由で処理できなかった時に発生させる
+```
+
+status を書いておいたので、debug が楽だった。strong parameter で permit している要素が足りていなかった。
+
+## image の upload
+
+参考 https://railstutorial.jp/chapters/user_microposts?version=7.0#sec-micropost_images
+
+```sh
+bin/rails active_storage:install
+bin/rails db:migrate
+```
+
+```sh
+#rubocop warning
+Offenses:
+
+app/models/product.rb:11:44: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+```
+
+error メッセージのハードコーディングが検出された。めっちゃ優秀。locale によって error メッセージの言語を変えられたほうが、ユーザーフレンドリーかもしれない。[guide](https://railsguides.jp/i18n.html)
+i18n は`internationalization`が 18 文字だかららしい 😕
+
+## MIME type
+
+Multipurpose Internet Mail Extensions
+多分追記
+
+```rb
+#model 今回はrefが一つだけなので
+has_one_attached :ref
+
+#controller
+# create newに追加する。has_one_attachedは上書きする。
+  ...
+  @product.ref.attach(params[:product][:ref])
+  ...
+```
+
+image の seed を作るのに時間がかかった。jpeg の中の拡張子が違くて validation に引っかかってしまっていたため変な挙動になっていた。
+`in: %w[image/png image/jpg image/jpeg image/gif image/webp]`webp も追加するようにした。

@@ -2,7 +2,7 @@
 
 footer {
   margin-top: 100px;
-  background-image: url(footer_bg.jpeg);
+  background-image: url("footer_bg.jpeg");
   color: white;
 }
 

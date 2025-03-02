@@ -15,6 +15,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.uid ||= SecureRandom.uuid
+    @product.ref.attach(params[:product][:ref])
     if @product.save
       redirect_to @product
     else
@@ -23,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.ref.attach(params[:product][:ref])
     if @product.update(product_params)
       redirect_to @product
     else
@@ -38,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :description)
+    params.require(:product).permit(:name, :cost, :price, :category, :description, :ref)
   end
 
   def set_product
