@@ -142,3 +142,5 @@ Uncaught TypeError: Failed to resolve module specifier "controllers". Relative r
 
 またこのエラーに遭遇。
 `app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
+
+product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの width を 31％に拘らなければ、もっと簡単に書ける気がする。

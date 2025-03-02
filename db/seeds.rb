@@ -27,4 +27,14 @@ mealNames.each do |name|
   )
 end
 
+Product.create!(
+  uid: SecureRandom.uuid,
+  name: "nosrc",
+  cost: 1000,
+  price: 1000,
+  description: "no reference",
+  category: "meal",
+)
+
+
 

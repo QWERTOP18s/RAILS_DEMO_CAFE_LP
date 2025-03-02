@@ -20,6 +20,8 @@
   position: relative;
   padding-top: 100%; /* 高さを幅の100%にする（正方形） */
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-image {
@@ -29,4 +31,33 @@
   width: 100%;
   height: 100%;
   object-fit: cover; /* 縦横比を保ちながら、親要素に合わせてトリミング */
+}
+
+.product-name {
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
+  /* transform: translateX(-50%); */
+  background-color: rgba(80, 80, 80, 0.3);
+  color: white;
+  padding: 20px 20px;
+  font-size: 16px;
+  text-align: center;
+
+  width: 60%;
+  border-radius: 5px;
+  font-size: 24px;
+
+  backdrop-filter: blur(5px);
+  transition: all 1s ease-in-out;
+}
+
+.product-card:hover .product-name {
+  background-color: rgba(90, 90, 90, 0);
+
+  transform: translateX(120%);
+}
+
+.product-card:hover .product-image {
+  opacity: 0.8;
 }

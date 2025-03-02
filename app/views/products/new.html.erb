@@ -1,3 +1,21 @@
 <% provide(:title, "new") %>
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @product do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :cost %>
+      <%= f.number_field :cost, class: 'form-control', min: 1 %>
+      <%= f.label :price %>
+      <%= f.number_field :price, class: 'form-control' , min:1 %>
+      <%= f.label :category %>
+      <%= f.select :category, %w[drink meal etc].map , {}, class: 'form-control' %>
+      <%= f.label :ref %>
+      <%= f.file_field :ref %>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+      <%= f.submit "Create Product", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -5,15 +5,15 @@ one:
   name: coffee
   cost: 100
   price: 400
-  ref: MyString
-  description: "assets/images/coffee.jpg"
+  ref: "blend-coffee.jpeg"
+  description: Text
   category: drink
 
 two:
   uid: uuid2
-  name: cafe-au-lait
+  name: pancake
   cost: 300
   price: 500
-  ref: "assets/images/cafe-au-lait.jpg"
+  # ref: "pancake.jpeg"
   description: Text
-  category: drink
+  category: meal

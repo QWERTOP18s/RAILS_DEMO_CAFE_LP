@@ -1,14 +1,21 @@
 <div class="category-title">
-  <h2><%= products.first.category %></h2>
+  <% if products.first && products.first.category %>
+    <h2><%= products.first.category %></h2>
+  <% else %>
+    <h2>Category not available</h2>
+  <% end %>
 </div>
 <ul>
   <% products.each do |product| %>
     <li>
-      <div class="product-card">
+      <%= link_to product_path(product), class: "product-card" do %>>
         <%# hoverでdescriptionが下半分に現れる。clickでeditへ %>
-        <%= link_to image_tag(product.ref, alt: product.name, class: "product-image"), product_path(product) %>
-        <%= product.name %>
-      </div>
+        <%# <%= link_to image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image"), product_path(product) %>
+        <%= image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image") %>
+        <p class="product-name">
+          <%= product.name %>
+        </p>
+      <% end %>
     </li>
   <% end %>
 </ul>
