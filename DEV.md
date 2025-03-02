@@ -220,3 +220,5 @@ bin/rails generate integration_test product_delete
 | new/create  | POST          | assert_difference 'Product.count'で個数の変化を確認      |
 | edit/update | PATCH         | assert_equal @product.reload.属性名で更新後の値を確認    |
 | destroy     | DELETE        | assert_difference 'Product.count', -1 で個数の減少を確認 |
+
+github で pull_request する前に`act pull_request`で local で検証できるみたい。
