@@ -1,0 +1,8 @@
+<% provide(:title, "detail") %>
+<%= @product.name %>
+<%= @product.price %>
+<%= @product.description %>
+<%= image_tag @product.ref, alt: @product.name ,class: "coffee-image"%>
+<%= link_to "edit", edit_product_path(@product) %>
+<%= link_to "delete", @product, data: { "turbo-method": :delete,
+                                          turbo_confirm: "You sure?" } %>

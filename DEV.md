@@ -20,10 +20,16 @@ blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面�
 
 ## 参考サイト
 
-- [https://www.tullys.co.jp/](tullys)
-- [https://www.starbucks.co.jp/](starbacks)
+- [tullys](https://www.tullys.co.jp/)
+- [starbacks](https://www.starbucks.co.jp/)
 
-## March 1st 🌸
+- [importmap](https://note.com/everyleaf/n/n0a5934373f12)
+
+## references
+
+- [google-font](https://fonts.google.com/)
+
+# March 1st 🌸
 
 ```sh
 bundle exec rails _7.0.4.3_ new cafe_lp
@@ -95,10 +101,44 @@ gem 'font-awesome-sass'
 @import "font-awesome";
 ```
 
-## March 2nd 🍡
+# March 2nd 🍡
 
 header の css を当てる developer tool をもっと有効活用したら、楽に作業できそう。
 `width: 100%;`を当てていないから flex-end などの挙動がおかしかった。
 `⌥ ⌘　T`close other window がかなり便利
 
 `⇧ ⌘ T`で tab 復元
+
+```sh
+bin/rails generate controller Products index show new edit
+```
+
+## CRUD 操作
+
+new->create
+edit->update
+
+定型文なのでまずこれを用意する。
+new と create で 2 回 new するのは謎
+
+```rb :foo_controller.rb
+before_action :set_foo, only: [:show, :edit, :update, :destroy]
+
+private
+  def foo_params
+    params.require(:foo).permit("必要なcolumn")
+  end
+
+  def set_foo
+    @foo = Foo.find(params[:id])
+  end
+```
+
+## destroy 時の error
+
+```sh
+Uncaught TypeError: Failed to resolve module specifier "controllers". Relative references must start with either "/", "./", or "../".
+```
+
+またこのエラーに遭遇。
+`app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！

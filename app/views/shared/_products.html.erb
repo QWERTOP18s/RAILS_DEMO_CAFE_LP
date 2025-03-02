@@ -6,7 +6,7 @@
     <li>
       <div class="product-card">
         <%# hoverでdescriptionが下半分に現れる。clickでeditへ %>
-        <%= link_to image_tag(product.ref, alt: product.name, class: "product-image"), "#" %>
+        <%= link_to image_tag(product.ref, alt: product.name, class: "product-image"), product_path(product) %>
         <%= product.name %>
       </div>
     </li>
