@@ -1,6 +1,6 @@
 <% provide(:title, "Home") %>
 <div class="product-list">
-  <%= render "shared/products", products: @drinks %>
-  <%= render "shared/products", products: @meals %>
-  <%= render "shared/products", products: @etc %>
+  <%= render "shared/products", products: @drinks if @drinks.any? %>
+  <%= render "shared/products", products: @meals if @meals.any? %>
+  <%= render "shared/products", products: @etc if @etc.any? %>
 </div>

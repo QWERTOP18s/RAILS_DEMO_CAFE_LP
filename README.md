@@ -2,7 +2,7 @@
 
 see also
 
-[dev.md](./DEV.md)
+[dev.md](./.md/./DEV.md)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

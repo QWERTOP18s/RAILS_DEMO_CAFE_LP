@@ -49,6 +49,10 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Max: 30
 
+# ブロックの行数制限を緩和
+Metrics/BlockLength:
+  Max: 30
+
 # 循環的複雑度を緩和
 Metrics/CyclomaticComplexity:
   Max: 10
