@@ -268,5 +268,3 @@ RAILS_ENV=production bin/rails s
 長くなりそうなのでファイルを分けた
 
 [エラーページをカスタムする](./custom404.md)
-
-s

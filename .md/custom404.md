@@ -56,3 +56,26 @@ get '*path', to: 'errors#not_found'
 404 をキャッチするなら上のようにかけるけど、500 がキャッチで来ていない気がする。`rescue_from`についてもあまり理解できていない。
 とりあえず 404 だけこの方法で処理して後で治せそうだったらなおす
 この方法だと development 環境でも処理できる
+
+```rb
+#not_found.html.erb
+<h1>404 Not Found</h1>
+<p> <%= I18n.t('errors.messages.not_found') %></p>
+```
+
+多言語対応できるようにした。default の設定は config から
+
+```rb
+#config/application.rb
+config.i18n.default_locale = :ja
+```
+
+```rb
+#routes.rb
+#routes.rb
+  match '*path', to: 'errors#not_found', via: :all, constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
+```
+
+activeStorage が使えなくなってしまっ低田ので、上のようにした。
