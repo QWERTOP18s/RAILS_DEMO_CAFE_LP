@@ -19,11 +19,12 @@
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
 - [preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
 
-**css**
+**CSS**
 
+- https://developer.mozilla.org/ja/docs/Web/CSS
 - [画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
 
-## references
+**CATEGORY ANY**
 
 - [google-font](https://fonts.google.com/)
 - [http status code](https://learn.microsoft.com/ja-jp/dotnet/api/system.net.httpstatuscode?view=net-8.0)
@@ -297,3 +298,24 @@ a:hover {
 ```
 
 この設定かなりお気に入り。
+
+`link_to "#"`を単に`#`と書いてしまうと`too many redirects`で動かなくなってしまう。
+言語切り替えはできれば dropdown からやりたい。
+
+[linear gradient](https://developer.mozilla.org/ja/docs/Web/CSS/gradient/linear-gradient)
+👆 面白そう　使わなかったけど
+
+`>` を使うと一つ下の子供にのみ影響できるらしい
+画像のリサイズが難しい。。。
+
+`flex-grow` = 残り空間をどれだけ割り当てるか
+
+## 親要素の width を無視して 100vh 当てる
+
+[example](../app/assets/stylesheets/product/index.css#L1-L10)
+
+## sidebar
+
+sidebar + main で sidbar のリンクを触れたら`@current = @drinks`みたいな感じにしたかったけど、簡単には行かなかった。
+Ajax を使うか js で`onClick`で書くかなので、drinks,meals,etc それぞれのページを作った方が楽そう、、、
+眠いので一回眠る。

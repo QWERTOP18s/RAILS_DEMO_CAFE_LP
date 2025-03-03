@@ -68,8 +68,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.active_storage.service = :local
 
-
-
   # config.consider_all_requests_local = false  # プロダクション環境と同じエラーハンドリング
-  
 end

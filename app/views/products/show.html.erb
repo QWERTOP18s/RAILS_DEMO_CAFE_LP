@@ -2,8 +2,11 @@
 <%= @product.name %>
 <%= @product.price %>
 <%= @product.description %>
-<%# <%= image_tag @product.ref || 'noref.jpg', alt: @product.name ,class: "coffee-image"%>
-<%= image_tag @product.ref if @product.ref.attached? %>
+<% if @product.ref.attached? %>
+  <%= image_tag @product.ref.variant(resize_to_limit: [200, 200]), alt: @product.name, class: "detail-image" %>
+<% else %>
+  <%= image_tag 'noref.jpg', alt: @product.name, class: "detail-image" %>
+<% end %>
 <%= link_to "edit", edit_product_path(@product) %>
 <%= link_to "delete", @product, data: { "turbo-method": :delete,
-                                          turbo_confirm: "You sure?" } %>
+                                          turbo_confirm: I18n.t("views.messages.delete_confirm") } %>

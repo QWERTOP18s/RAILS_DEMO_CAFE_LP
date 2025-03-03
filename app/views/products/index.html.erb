@@ -1,6 +1,24 @@
 <% provide(:title, "Menu") %>
-<div class="product-list">
-  <%= render "shared/products", products: @drinks if @drinks.any? %>
-  <%= render "shared/products", products: @meals if @meals.any? %>
-  <%= render "shared/products", products: @etc if @etc.any? %>
+<div class="index-container">
+  <aside class="side-nav">
+    <nav>
+      <ul>
+        <li><%= render "products/search" %></li>
+        <li><%= link_to "Add Product", new_product_path %></li>
+        <li><%= link_to "Drinks", "#drinks" %></li>
+        <li><%= link_to "Meals", "#meals" %></li>
+        <li><%= link_to "Etc", "#etc" %></li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <div class="product-list">
+      <h2 id="drinks" class="home-title">Drinks</h2>
+      <%= render "shared/products", products: @drinks  %>
+      <h2 id="meals" class="home-title">Meals</h2>
+      <%= render "shared/products", products: @meals  %>
+      <h2 id="etc" class="home-title">Etc</h2>
+      <%= render "shared/products", products: @etc  %>
+    </div>
+  </main>
 </div>

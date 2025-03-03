@@ -16,6 +16,8 @@ div class="category-title">
         <%# <%= image_tag(product.ref || 'noref.jpg', alt: product.name, class: "product-image") %>
         <% if product.ref.attached? %>
           <%= image_tag product.ref.variant(resize_to_limit: [500, 500]), alt: product.name, class: "product-image" %>
+        <% else %>
+          <%= image_tag 'noref.jpg', alt: product.name, class: "product-image" %>
         <% end %>
         <p class="product-name">
           <%= product.name %>
