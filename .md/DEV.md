@@ -1,22 +1,4 @@
-blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面白そう、できれば cube 上の店もつくりたい。
-
-## must
-
-- CRUD 操作の実装
-- input の validation
-- minitest 自分の手で書く
-- 写真のアップロード
-- 日記をつける
-
-## やりたいこと
-
-- レスポンシブ対応 sidebar<->hamburger
-- blender で商品のモデル作成
-- three.js による埋め込み
-- blender で店の model を作成
-- 地図の埋め込み
-- User の実装
-- rails --api
+[todo](./todo.md)
 
 ## 参考サイト
 
@@ -229,7 +211,7 @@ bin/rails generate integration_test product_delete
 github で pull_request する前に`act pull_request`で local で検証できるみたい。
 pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶｯﾀ
 
-# March 3rd 💐
+# March 3rd ☘️
 
 **todo**
 
@@ -268,3 +250,7 @@ RAILS_ENV=production bin/rails s
 長くなりそうなのでファイルを分けた
 
 [エラーページをカスタムする](./custom404.md)
+
+page not found のカスタムと戦っていたら、思ったより時間が経ってしまったけど、色々と勉強になった気がする
+
+# March 4th 💐

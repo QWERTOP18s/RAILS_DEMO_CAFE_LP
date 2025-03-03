@@ -1,28 +1,44 @@
 # README
 
-see also
+[開発記録](./.md/./DEV.md)
 
-[dev.md](./.md/./DEV.md)
+## セットアップ方法
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 依存関係のインストール
 
-Things you may want to cover:
+```bash
+bundle install
+```
 
-- Ruby version
+### データベースのセットアップ
 
-- System dependencies
+```bash
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-- Configuration
+### アプリケーションの起動
 
-- Database creation
+```bash
+rails server
+```
 
-- Database initialization
+### ロケール設定
 
-- How to run the test suite
+```ruby
+# config/application.rb
+config.i18n.default_locale = :ja
+```
 
-- Services (job queues, cache servers, search engines, etc.)
+### テストの実行
 
-- Deployment instructions
+```bash
+rails test
+```
 
-- ...
+### Lint チェック
+
+```bash
+rubocop
+```
