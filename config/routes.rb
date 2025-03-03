@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   get 'products/index'
   get 'products/show'
   get 'products/new'
@@ -8,4 +10,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
 
   resources :products
+
+  # match "/404", to: "errors#not_found", via: :all
+  # match "/500", to: "errors#internal_server_error", via: :all
+  get '*path', to: 'errors#not_found'
 end

@@ -20,14 +20,20 @@ blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面�
 
 ## 参考サイト
 
+**DESIGN**
+
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
 
+**TECH BLOG**
+
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
+- [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
 
 ## references
 
 - [google-font](https://fonts.google.com/)
+- [http status code](https://learn.microsoft.com/ja-jp/dotnet/api/system.net.httpstatuscode?view=net-8.0)
 
 # March 1st 🌸
 
@@ -155,10 +161,9 @@ product.css を頑張った。hover のアクションが色々とあって面�
 
 午後にやりたいこと
 
-- page-title background-color は文字の上半分だけかぶるようにしたい
 - ~~edit の実装~~
 - ~~img の埋め込み~~
-- minitest を書く
+- ~~minitest を書く~~
 
 再開。少し tutorial を読んでいた、vscode 色々といじっていたら erb にカラーが適用されなくなってしまった。
 
@@ -222,3 +227,46 @@ bin/rails generate integration_test product_delete
 | destroy     | DELETE        | assert_difference 'Product.count', -1 で個数の減少を確認 |
 
 github で pull_request する前に`act pull_request`で local で検証できるみたい。
+pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶｯﾀ
+
+# March 3rd 💐
+
+**todo**
+
+- delete したページのフォワーディング
+- edit, index のスタイリング(index は sidevar でカテゴリーを選択できるようにしたい。Home は最初 4 枚だけでもいいかもしれない)
+- page-title background-color は文字の上半分だけかぶるようにしたい
+
+## 404
+
+product の削除->index にフォワーディング->ページを戻る->404
+
+public/404.html は local 環境だと表示されないので、以下を設定する。これだと全ての debug 情報が失われてしまうので、確認したら戻す。
+
+```rb
+# config/environments/development.rb
+config.consider_all_requests_local = false
+```
+
+production 環境が用意されている場合は
+
+```sh
+RAILS_ENV=production bin/rails s
+```
+
+でも大丈夫そう。404 以外に使う status
+
+| エラー                        | 原因                                                                |
+| ----------------------------- | ------------------------------------------------------------------- |
+| **422 Unprocessable Entity**  | バリデーションエラー、Strong Parameters の制限、CSRF トークンエラー |
+| **500 Internal Server Error** | Ruby の例外、データベースエラー、環境変数未設定、API のタイムアウト |
+
+エラーログは `log/development.log` に蓄積される
+[custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
+
+404.html だと静的ファイルなので header や footer が適用されない。
+長くなりそうなのでファイルを分けた
+
+[エラーページをカスタムする](./custom404.md)
+
+s
