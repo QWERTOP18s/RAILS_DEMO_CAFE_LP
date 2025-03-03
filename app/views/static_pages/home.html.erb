@@ -1,6 +1,19 @@
 <% provide(:title, "Home") %>
-<div class="product-list">
-  <%= render "shared/products", products: @drinks if @drinks.any? %>
-  <%= render "shared/products", products: @meals if @meals.any? %>
-  <%= render "shared/products", products: @etc if @etc.any? %>
+<div class="scroll-infinity">
+  <div class="scroll-infinity__wrap">
+    <ul class="scroll-infinity__list scroll-infinity__list--left">
+      <li class="scroll-infinity__item"><%= image_tag 'home_bg.jpg', alt: 'image'%></li>
+    </ul>
+    <ul class="scroll-infinity__list scroll-infinity__list--left">
+      <li class="scroll-infinity__item"><%= image_tag 'home_bg.jpg', alt: 'image' %></li>
+    </ul>
+  </div>
 </div>
+<%= render "shared/news" %>
+<% if @recommend.any? %>
+  <div class="product-list">
+    <h2 class="home-title">RECOMMEND</h2>
+    <%= render "shared/products", products: @recommend%>
+  </div>
+<% end %>
+<%= render "shared/map", id: "map" %>

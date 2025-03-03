@@ -3,9 +3,11 @@
   <%= render 'layouts/_head' %>
   <body>
     <%= render 'layouts/header' %>
-    <section class="page-title">
-      <h1><%= yield(:title) %></h1>
-    </section>
+    <% unless yield(:title) == "Home" %>
+      <section class="page-title">
+        <h1><%= yield(:title) %></h1>
+      </section>
+    <% end %>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>

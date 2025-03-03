@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   # match "/500", to: "errors#internal_server_error", via: :all
 
   # get '*path', to: 'errors#not_found'
-  match '*path', to: 'errors#not_found', via: :all, constraints: lambda { |req|
-    req.path.exclude? 'rails/active_storage'
-  }
+ 
+    match '*path', to: 'errors#not_found', via: :all, constraints: lambda { |req|
+      req.path.exclude? 'rails/active_storage'
+    }
+  
 end

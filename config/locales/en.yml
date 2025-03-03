@@ -36,3 +36,4 @@ en:
       image_too_large: "should be less than 5MB"
       not_found: "The page you were looking for doesn't exist"
       internal_server_error: "We're sorry, but something went wrong"
+      back_to_home: "Back to Home"

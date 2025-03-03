@@ -1,8 +1,16 @@
 <header>
   <div class="logo">
-    <%= image_tag "logo2.png", alt: "logo", class: "logo" %>
+    <%= link_to root_path do %>
+      <%= image_tag "logo2.png", alt: "logo", class: "logo" %>
+    <% end %>
   </div>
-  <div class="header-links">
+  <nav class="header-left">
+    <ul>
+      <li><%= link_to "menu", products_path %></li>
+      <li><%= link_to "about", about_path %></li>
+    </ul>
+  </nav>
+  <nav class="header-links">
     <ul>
       <li><%= link_to root_path do %>
           <i class="fa fa-house"></i>
@@ -10,7 +18,9 @@
       <li><%= link_to new_product_path do %>
           <i class="fa fa-plus"></i>
         <% end %></li>
-      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to root_path + "#map" do %>
+          <i class="fa-solid fa-location-dot"></i>
+        <% end %></li>
     </ul>
-  </div>
+  </nav>
 </header>

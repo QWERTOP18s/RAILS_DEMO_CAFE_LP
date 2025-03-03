@@ -2,15 +2,26 @@
 
 ## 参考サイト
 
+**FREE IMAGE**
+
+- https://www.pexels.com/
+
 **DESIGN**
 
+- https://webdesignclip.com/
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
+- [mac](https://www.mcdonalds.co.jp/)
 
-**TECH BLOG**
+- **TECH BLOG**
 
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
+- [preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
+
+**css**
+
+- [画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
 
 ## references
 
@@ -254,3 +265,35 @@ RAILS_ENV=production bin/rails s
 page not found のカスタムと戦っていたら、思ったより時間が経ってしまったけど、色々と勉強になった気がする
 
 # March 4th 💐
+
+**todo**
+
+- edit new の css
+- 画像の prereview[preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
+- map の挿入
+- footer の改良
+- 商品の crud が news に反映されるようにする。
+
+css でスタイリング。home の画像スクロール[画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
+
+```html
+<li>
+  <%= link_to root_path + "#map" do %>
+  <i class="fa-solid fa-location-dot"></i>
+  <% end %>
+</li>
+```
+
+これでページの途中に飛べる。
+
+```css
+a:hover {
+  color: #8b8b8b;
+  text-decoration: underline;
+  text-decoration-color: rgb(110, 180, 145);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 3px;
+}
+```
+
+この設定かなりお気に入り。

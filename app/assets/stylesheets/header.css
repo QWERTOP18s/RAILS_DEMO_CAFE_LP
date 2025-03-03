@@ -13,7 +13,8 @@ header .logo {
   padding: 0;
 }
 
-header .header-links {
+header .header-links,
+header .header-left {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,15 +23,32 @@ header .header-links {
   width: 100%;
 }
 
-header .header-links ul {
+header ul {
   list-style: none;
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+
   align-items: center;
   padding: 0;
-
   margin: 0;
+}
+
+header .header-links ul {
+  justify-content: flex-end;
+}
+
+header .header-left {
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+header .header-left li {
+  margin-right: 20px;
+}
+
+header .header-left a {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
 }
 
 header .header-links li {
@@ -44,7 +62,15 @@ a {
   text-decoration: none;
 }
 
-header .header-links i:hover,
-a:hover {
-  color: rgb(140, 140, 140);
+header a:hover {
+  color: #8b8b8b;
+  text-decoration: underline;
+  text-decoration-color: rgb(110, 180, 145);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 3px;
+}
+
+header i:hover {
+  color: #8b8b8b;
+  transform: scale(1.1);
 }
