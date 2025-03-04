@@ -1,36 +1,30 @@
-blender で cake や coffee の 3Dmodel を作成して、埋め込めたら面白そう、できれば cube 上の店もつくりたい。
-
-## must
-
-- CRUD 操作の実装
-- input の validation
-- minitest 自分の手で書く
-- 写真のアップロード
-- 日記をつける
-
-## やりたいこと
-
-- レスポンシブ対応 sidebar<->hamburger
-- blender で商品のモデル作成
-- three.js による埋め込み
-- blender で店の model を作成
-- 地図の埋め込み
-- User の実装
-- rails --api
+[todo](./todo.md)
 
 ## 参考サイト
 
+**FREE IMAGE**
+
+- https://www.pexels.com/
+
 **DESIGN**
 
+- https://webdesignclip.com/
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
+- [mac](https://www.mcdonalds.co.jp/)
 
-**TECH BLOG**
+- **TECH BLOG**
 
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
+- [preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
 
-## references
+**CSS**
+
+- https://developer.mozilla.org/ja/docs/Web/CSS
+- [画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
+
+**CATEGORY ANY**
 
 - [google-font](https://fonts.google.com/)
 - [http status code](https://learn.microsoft.com/ja-jp/dotnet/api/system.net.httpstatuscode?view=net-8.0)
@@ -229,7 +223,7 @@ bin/rails generate integration_test product_delete
 github で pull_request する前に`act pull_request`で local で検証できるみたい。
 pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶｯﾀ
 
-# March 3rd 💐
+# March 3rd ☘️
 
 **todo**
 
@@ -268,3 +262,60 @@ RAILS_ENV=production bin/rails s
 長くなりそうなのでファイルを分けた
 
 [エラーページをカスタムする](./custom404.md)
+
+page not found のカスタムと戦っていたら、思ったより時間が経ってしまったけど、色々と勉強になった気がする
+
+# March 4th 💐
+
+**todo**
+
+- edit new の css
+- 画像の prereview[preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
+- map の挿入
+- footer の改良
+- 商品の crud が news に反映されるようにする。
+
+css でスタイリング。home の画像スクロール[画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
+
+```html
+<li>
+  <%= link_to root_path + "#map" do %>
+  <i class="fa-solid fa-location-dot"></i>
+  <% end %>
+</li>
+```
+
+これでページの途中に飛べる。
+
+```css
+a:hover {
+  color: #8b8b8b;
+  text-decoration: underline;
+  text-decoration-color: rgb(110, 180, 145);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 3px;
+}
+```
+
+この設定かなりお気に入り。
+
+`link_to "#"`を単に`#`と書いてしまうと`too many redirects`で動かなくなってしまう。
+言語切り替えはできれば dropdown からやりたい。
+
+[linear gradient](https://developer.mozilla.org/ja/docs/Web/CSS/gradient/linear-gradient)
+👆 面白そう　使わなかったけど
+
+`>` を使うと一つ下の子供にのみ影響できるらしい
+画像のリサイズが難しい。。。
+
+`flex-grow` = 残り空間をどれだけ割り当てるか
+
+## 親要素の width を無視して 100vh 当てる
+
+[example](../app/assets/stylesheets/product/index.css#L1-L10)
+
+## sidebar
+
+sidebar + main で sidbar のリンクを触れたら`@current = @drinks`みたいな感じにしたかったけど、簡単には行かなかった。
+Ajax を使うか js で`onClick`で書くかなので、drinks,meals,etc それぞれのページを作った方が楽そう、、、
+眠いので一回眠る。

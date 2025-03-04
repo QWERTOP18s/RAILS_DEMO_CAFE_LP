@@ -1,6 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
+    @drinks = Product.where(category: 'drink')
+    @meals = Product.where(category: 'meal')
+    @etc = Product.where(category: 'etc')
   end
 
   def show

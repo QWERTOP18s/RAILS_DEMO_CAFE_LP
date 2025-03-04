@@ -1,7 +1,8 @@
 require 'securerandom'
 
-drinkNames = %w[blend-coffee cafe-au-lait espresso nonexsist]
+drinkNames = %w[blend-coffee cafe-au-lait espresso]
 mealNames = %w[croissant pancake bagle]
+etcNames = %w[beans]
 
 def getRefPath(name)
   Rails.root.join("public/product_refs/#{name}.jpeg")
@@ -40,6 +41,19 @@ mealNames.each do |name|
   )
   attachRef(p, name)
 end
+
+etcNames.each do |name|
+  p = Product.create!(  
+    uid: SecureRandom.uuid,
+    name: name,
+    cost: 1000,
+    price: 1000,
+    description: "etc",
+    category: "etc",
+  )
+  attachRef(p, name)
+end
+
 
 Product.create!(
   uid: SecureRandom.uuid,

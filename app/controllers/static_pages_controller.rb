@@ -1,8 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @drinks = Product.where(category: 'drink')
-    @meals = Product.where(category: 'meal')
-    @etc = Product.where(category: 'etc')
+    @recommend = Product.with_attached_ref
+                        .where.not(active_storage_attachments: { id: nil })
+                        .order('RANDOM()')
+                        .limit(3)
   end
 
   def about

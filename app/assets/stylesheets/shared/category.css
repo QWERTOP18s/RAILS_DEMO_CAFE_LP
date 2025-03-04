@@ -1,0 +1,20 @@
+.category-title {
+  display: flex;
+  padding-left: 7%;
+
+  font-weight: bold;
+  font-family: "Oxygen", sans-serif;
+  font-size: 40px;
+
+  background: linear-gradient(
+    to right,
+    rgba(100, 100, 100, 0.9),
+    rgba(255, 255, 255, 0.5)
+  );
+
+  text-align: center;
+
+  padding-top: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

@@ -36,3 +36,10 @@ en:
       image_too_large: "should be less than 5MB"
       not_found: "The page you were looking for doesn't exist"
       internal_server_error: "We're sorry, but something went wrong"
+      back_to_home: "Back to Home"
+
+  views:
+    messages:
+      delete_confirm: "You sure?"
+
+  about_text: "We are a small coffee shop located in the heart of the city. We offer a variety of coffee and tea, as well as a selection of pastries and sandwiches. We are open from 7am to 5pm every day."

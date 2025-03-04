@@ -1,2 +1,5 @@
 <% provide(:title, "About") %>
 <%= link_to image_tag("about.jpeg", alt: "img", class: "coffee-image"), "#" %>
+<div class="about-text">
+  <p><%= I18n.t("about_text") %></p>
+</div>
