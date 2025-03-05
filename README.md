@@ -1,6 +1,6 @@
 # README
 
-<img alt="stack" src="https://skillicons.dev/icons?theme=dark&perline=7&i=css,rails,minitest" />
+<img alt="stack" src="https://skillicons.dev/icons?theme=dark&perline=7&i=css,bootstrap,rails,minitest" />
 
 test: minitest
 

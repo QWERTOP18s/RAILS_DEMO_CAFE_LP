@@ -19,6 +19,7 @@
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
 - [preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
+- [env file](https://qiita.com/fumiya1800/items/6795e5e1046ec6f60aed)
 
 **CSS**
 
@@ -28,6 +29,7 @@
 **CATEGORY ANY**
 
 - [google-font](https://fonts.google.com/)
+- [google map doc](https://developers.google.com/maps/documentation/javascript/geocoding?hl=ja)
 - [http status code](https://learn.microsoft.com/ja-jp/dotnet/api/system.net.httpstatuscode?view=net-8.0)
 
 # March 1st 🌸
@@ -392,3 +394,17 @@ def index
 ```
 
 三桁区切りで,を入れてくれる便利かもしれない
+
+## map
+
+```rb
+# Gemfile
+gem 'dotenv-rails'
+```
+
+.envに書いたものが`ENV['KEY']`で取り出せるようになる
+
+```rb
+# Gemfile
+gem 'google_maps_service'
+```
