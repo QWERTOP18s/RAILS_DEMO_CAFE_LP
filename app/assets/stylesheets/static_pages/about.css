@@ -3,3 +3,29 @@
   height: 300px;
   object-fit: cover;
 }
+.about-container {
+  display: flex;
+}
+
+.media-container {
+  /* display: flex; */
+  justify-content: space-between;
+  margin: 30px;
+}
+.media-container h3 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.media-container ul {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+}
+.media-container i {
+  font-size: 4rem;
+}
+
+.about-description p {
+  margin: 30px;
+  padding-top: 30px;
+}

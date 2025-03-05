@@ -9,6 +9,7 @@
 **DESIGN**
 
 - https://webdesignclip.com/
+- [bach-kaffe](https://www.bach-kaffee.co.jp)
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
 - [mac](https://www.mcdonalds.co.jp/)
@@ -18,6 +19,7 @@
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
 - [preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
+- [env file](https://qiita.com/fumiya1800/items/6795e5e1046ec6f60aed)
 
 **CSS**
 
@@ -27,6 +29,7 @@
 **CATEGORY ANY**
 
 - [google-font](https://fonts.google.com/)
+- [google map doc](https://developers.google.com/maps/documentation/javascript/geocoding?hl=ja)
 - [http status code](https://learn.microsoft.com/ja-jp/dotnet/api/system.net.httpstatuscode?view=net-8.0)
 
 # March 1st 🌸
@@ -46,7 +49,8 @@ bundle install
 
 ### formatter & linter
 
-rubocop の使い方がいまいちわからないので保存時に.rb だけ整形されない。.erb は`gem 'htmlbeautifier'`で、他は`prettier`で整形されるようにした。
+rubocop の使い方がいまいちわからないので保存時に.rb だけ整形されない。.erb は`gem 'htmlbeautifier'`で、他は`prettier`
+で整形されるようにした。
 
 ```sh
 # auto correct
@@ -88,6 +92,7 @@ uid = SecureRandom.uuid
 create するときに割り当てることを忘れずに
 
 ```rb
+
 def create
   @product.uid ||= SecureRandom.uuid
 end
@@ -133,13 +138,14 @@ new と create で 2 回 new するのは謎
 before_action :set_foo, only: [:show, :edit, :update, :destroy]
 
 private
-  def foo_params
-    params.require(:foo).permit("必要なcolumn")
-  end
 
-  def set_foo
-    @foo = Foo.find(params[:id])
-  end
+def foo_params
+  params.require(:foo).permit("必要なcolumn")
+end
+
+def set_foo
+  @foo = Foo.find(params[:id])
+end
 ```
 
 ## destroy 時の error
@@ -149,9 +155,11 @@ Uncaught TypeError: Failed to resolve module specifier "controllers". Relative r
 ```
 
 またこのエラーに遭遇。
-`app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
+`app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。
+`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
 
-product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの width を 31％に拘らなければ、もっと簡単に書ける気がする。
+product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの
+width を 31％に拘らなければ、もっと簡単に書ける気がする。
 
 午後にやりたいこと
 
@@ -184,7 +192,8 @@ Offenses:
 app/models/product.rb:11:44: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
 ```
 
-error メッセージのハードコーディングが検出された。めっちゃ優秀。locale によって error メッセージの言語を変えられたほうが、ユーザーフレンドリーかもしれない。[guide](https://railsguides.jp/i18n.html)
+error メッセージのハードコーディングが検出された。めっちゃ優秀。locale によって error
+メッセージの言語を変えられたほうが、ユーザーフレンドリーかもしれない。[guide](https://railsguides.jp/i18n.html)
 i18n は`internationalization`が 18 文字だかららしい 😕
 
 ## MIME type
@@ -196,11 +205,11 @@ Multipurpose Internet Mail Extensions
 #model 今回はrefが一つだけなので
 has_one_attached :ref
 
-#controller
-# create newに追加する。has_one_attachedは上書きする。
-  ...
-  @product.ref.attach(params[:product][:ref])
-  ...
+                 #controller
+                 # create newに追加する。has_one_attachedは上書きする。
+                 ...
+                   @product.ref.attach(params[:product][:ref])
+...
 ```
 
 image の seed を作るのに時間がかかった。jpeg の中の拡張子が違くて validation に引っかかってしまっていたため変な挙動になっていた。
@@ -228,7 +237,8 @@ pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶ�
 **todo**
 
 - delete したページのフォワーディング
-- edit, index のスタイリング(index は sidevar でカテゴリーを選択できるようにしたい。Home は最初 4 枚だけでもいいかもしれない)
+- edit, index のスタイリング(index は sidevar でカテゴリーを選択できるようにしたい。Home は最初 4
+  枚だけでもいいかもしれない)
 - page-title background-color は文字の上半分だけかぶるようにしたい
 
 ## 404
@@ -267,14 +277,6 @@ page not found のカスタムと戦っていたら、思ったより時間が�
 
 # March 4th 💐
 
-**todo**
-
-- edit new の css
-- 画像の prereview[preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
-- map の挿入
-- footer の改良
-- 商品の crud が news に反映されるようにする。
-
 css でスタイリング。home の画像スクロール[画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
 
 ```html
@@ -303,7 +305,7 @@ a:hover {
 言語切り替えはできれば dropdown からやりたい。
 
 [linear gradient](https://developer.mozilla.org/ja/docs/Web/CSS/gradient/linear-gradient)
-👆 面白そう　使わなかったけど
+👆 面白そう 使わなかったけど
 
 `>` を使うと一つ下の子供にのみ影響できるらしい
 画像のリサイズが難しい。。。
@@ -319,3 +321,90 @@ a:hover {
 sidebar + main で sidbar のリンクを触れたら`@current = @drinks`みたいな感じにしたかったけど、簡単には行かなかった。
 Ajax を使うか js で`onClick`で書くかなので、drinks,meals,etc それぞれのページを作った方が楽そう、、、
 眠いので一回眠る。
+
+## `application.html.erb`以外の基底 view を使用する方法
+
+```rb
+
+class UsersController < ApplicationController
+  layout "users" # app/views/layouts/users.html.erb を使用
+  # layout false  # レイアウトを適用しない
+end
+```
+
+今日あまり眠れなくて、なかなかやる気が出ない。discord を clone する講座が値引きされていたので買った。その前に少し modern js
+を勉強しておく。
+
+とりあえず 後やることの[list](./todo.md#L22)
+
+## March 5th 🍎
+
+少し jet brains 製品に触れてみる。mdはこちらの方が見やすいかもしれない、ただ表の枠線を除きたい。
+
+| keymap | action     |
+| ------ | ---------- |
+| ^ ⇧ -  | Go forward |
+
+でできるようにした。
+jet brainsだと`⌘ [ ]`でできるので、vscodeでもこっちにしたほうが便利なのかもしれない。configがxmlであまり慣れない。とりあえずprettierを導入したい。
+
+| vscode        | JetBrains   | Action |
+| ------------- | ----------- | ------ |
+| reload window | restart IDE | 再起動 |
+|               | ⌘⌥L         | format |
+|               |             |        |
+
+erbの他にhamlというものがあるらしい。
+products-indexは、`@current`によってviewが切り替わるようにしたい。
+`@current.category`のようにアクセスしようとしていて、かなり悩んだ。`@current`は配列なのでcategoryもインスタンス変数として持つことにした。
+
+```rb
+def index
+    @category = params[:category] || 'drinks'
+    @current = Product.where(category: @category)
+end
+
+# 呼び出し側
+<li><%= link_to "Drinks", products_path(category: 'drinks')%></li>
+```
+
+` <%= @current.count%>`debugに便利かもしれない。もっと細かくminitestを書く若しくはdebuggerを使った方がいいかも。
+parameterについて理解が足りていなかったけど、jsの`onClick`みたいなものがない代わりにparameterを使って関数を発火できた。
+
+## 検索機能
+
+とりあえずnameだけ検索、価格とかで検索できたら面白そう。検索boxのcssがあまり納得いっていないかもしれない。
+部分検索はsqlのlikeを使えばいい、ここら辺は生sqlをもっと勉強した方が良さそう。複数形にも一応対応
+
+```rb
+def index
+  if params[:search].present?
+        @current = Product.where("name LIKE ?", "%#{params[:search]}%")
+        @category = "#{helpers.pluralize(@current.count, 'result')} found"
+  else
+  ...
+```
+
+## March 6th
+
+## detail
+
+```rb
+<%= number_to_currency(@product.price.floor, unit: "¥", separator: ".", delimiter: ",", precision: 0) %>
+```
+
+三桁区切りで,を入れてくれる便利かもしれない
+
+## map
+
+```rb
+# Gemfile
+gem 'dotenv-rails'
+```
+
+.envに書いたものが`ENV['KEY']`で取り出せるようになる
+
+```rb
+# Gemfile
+gem 'google_maps_service'
+```

@@ -1,12 +1,17 @@
 <% provide(:title, "detail") %>
-<%= @product.name %>
-<%= @product.price %>
-<%= @product.description %>
-<% if @product.ref.attached? %>
-  <%= image_tag @product.ref.variant(resize_to_limit: [200, 200]), alt: @product.name, class: "detail-image" %>
-<% else %>
-  <%= image_tag 'noref.jpg', alt: @product.name, class: "detail-image" %>
-<% end %>
-<%= link_to "edit", edit_product_path(@product) %>
-<%= link_to "delete", @product, data: { "turbo-method": :delete,
-                                          turbo_confirm: I18n.t("views.messages.delete_confirm") } %>
+<div class="detail-container">
+  <% if @product.ref.attached? %>
+    <%= image_tag @product.ref, alt: @product.name, class: "detail-image" %>
+  <% else %>
+    <%= image_tag 'noref.jpg', alt: @product.name, class: "detail-image" %>
+  <% end %>
+  <div class="detail-info">
+    <h1><%= @product.name %></h1>
+    <p><%= number_to_currency(@product.price.floor, unit: "¥", separator: ".", delimiter: ",", precision: 0) %></p>
+    <p><%= @product.description %></p>
+    <div class="button-container">
+      <%= link_to "edit", edit_product_path(@product) %>
+      <%= link_to "delete", @product, data: { "turbo-method": :delete,
+                                            turbo_confirm: I18n.t("views.messages.delete_confirm") } %>
+    </div>
+  </div>

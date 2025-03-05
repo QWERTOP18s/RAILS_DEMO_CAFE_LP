@@ -8,12 +8,13 @@ footer {
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: auto;
   padding: 20px 40px;
 }
 
 .footer-container ul {
+  flex: 1;
   list-style: none;
 }
 

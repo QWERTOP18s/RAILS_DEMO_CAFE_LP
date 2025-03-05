@@ -1,3 +1,5 @@
 <% provide(:title, "500 Internal Server Error") %>
-<h2> <%= I18n.t('errors.messages.internal_server_error') %></h2>
-<%= link_to  I18n.t('errors.messages.back_to_home'), root_path %>
+<div class="error-container">
+  <h2> <%= I18n.t('errors.messages.internal_server_error') %></h2>
+  <%= link_to  I18n.t('errors.messages.back_to_home'), root_path %>
+</div>
