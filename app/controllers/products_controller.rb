@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  layout 'products_base'
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
     @drinks = Product.where(category: 'drink')

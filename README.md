@@ -1,5 +1,7 @@
 # README
 
+<img alt="stack" src="https://skillicons.dev/icons?theme=dark&perline=7&i=css,rails,js,minitest" />
+
 [開発記録](./.md/./DEV.md)
 
 ## セットアップ方法
@@ -37,7 +39,7 @@ config.i18n.default_locale = :ja
 rails test
 ```
 
-### Lint チェック
+### Lint
 
 ```bash
 rubocop

@@ -46,7 +46,8 @@ bundle install
 
 ### formatter & linter
 
-rubocop の使い方がいまいちわからないので保存時に.rb だけ整形されない。.erb は`gem 'htmlbeautifier'`で、他は`prettier`で整形されるようにした。
+rubocop の使い方がいまいちわからないので保存時に.rb だけ整形されない。.erb は`gem 'htmlbeautifier'`で、他は`prettier`
+で整形されるようにした。
 
 ```sh
 # auto correct
@@ -88,6 +89,7 @@ uid = SecureRandom.uuid
 create するときに割り当てることを忘れずに
 
 ```rb
+
 def create
   @product.uid ||= SecureRandom.uuid
 end
@@ -96,7 +98,9 @@ end
 title は SEO 対策につけておいた方が良さそう
 
 ```css
-object-fit: cover; /* 縦横比を保ちながら、親要素に合わせてトリミング */
+object-fit: cover
+
+; /* 縦横比を保ちながら、親要素に合わせてトリミング */
 ```
 
 ## icon
@@ -133,13 +137,14 @@ new と create で 2 回 new するのは謎
 before_action :set_foo, only: [:show, :edit, :update, :destroy]
 
 private
-  def foo_params
-    params.require(:foo).permit("必要なcolumn")
-  end
 
-  def set_foo
-    @foo = Foo.find(params[:id])
-  end
+def foo_params
+  params.require(:foo).permit("必要なcolumn")
+end
+
+def set_foo
+  @foo = Foo.find(params[:id])
+end
 ```
 
 ## destroy 時の error
@@ -149,9 +154,11 @@ Uncaught TypeError: Failed to resolve module specifier "controllers". Relative r
 ```
 
 またこのエラーに遭遇。
-`app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
+`app/javascript/controllers`を tutorial から丸ごと移植すると解決。importmap 関連の directory が最初からないのが問題。
+`mkdir -p`sub directory がない場合作成してくれるのでかなり便利！
 
-product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの width を 31％に拘らなければ、もっと簡単に書ける気がする。
+product.css を頑張った。hover のアクションが色々とあって面白い。今回 ease-in-out はかなりハマっていると思う。1 商品ごとの
+width を 31％に拘らなければ、もっと簡単に書ける気がする。
 
 午後にやりたいこと
 
@@ -184,7 +191,8 @@ Offenses:
 app/models/product.rb:11:44: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
 ```
 
-error メッセージのハードコーディングが検出された。めっちゃ優秀。locale によって error メッセージの言語を変えられたほうが、ユーザーフレンドリーかもしれない。[guide](https://railsguides.jp/i18n.html)
+error メッセージのハードコーディングが検出された。めっちゃ優秀。locale によって error
+メッセージの言語を変えられたほうが、ユーザーフレンドリーかもしれない。[guide](https://railsguides.jp/i18n.html)
 i18n は`internationalization`が 18 文字だかららしい 😕
 
 ## MIME type
@@ -196,11 +204,11 @@ Multipurpose Internet Mail Extensions
 #model 今回はrefが一つだけなので
 has_one_attached :ref
 
-#controller
-# create newに追加する。has_one_attachedは上書きする。
-  ...
-  @product.ref.attach(params[:product][:ref])
-  ...
+                 #controller
+                 # create newに追加する。has_one_attachedは上書きする。
+                 ...
+                   @product.ref.attach(params[:product][:ref])
+...
 ```
 
 image の seed を作るのに時間がかかった。jpeg の中の拡張子が違くて validation に引っかかってしまっていたため変な挙動になっていた。
@@ -214,11 +222,11 @@ bin/rails generate integration_test product_edit
 bin/rails generate integration_test product_delete
 ```
 
-| アクション  | HTTP メソッド | 確認方法                                                 |
-| ----------- | ------------- | -------------------------------------------------------- |
-| new/create  | POST          | assert_difference 'Product.count'で個数の変化を確認      |
-| edit/update | PATCH         | assert_equal @product.reload.属性名で更新後の値を確認    |
-| destroy     | DELETE        | assert_difference 'Product.count', -1 で個数の減少を確認 |
+| アクション       | HTTP メソッド | 確認方法                                            |
+|-------------|-----------|-------------------------------------------------|
+| new/create  | POST      | assert_difference 'Product.count'で個数の変化を確認      |
+| edit/update | PATCH     | assert_equal @product.reload.属性名で更新後の値を確認       |
+| destroy     | DELETE    | assert_difference 'Product.count', -1 で個数の減少を確認 |
 
 github で pull_request する前に`act pull_request`で local で検証できるみたい。
 pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶｯﾀ
@@ -228,7 +236,8 @@ pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶ�
 **todo**
 
 - delete したページのフォワーディング
-- edit, index のスタイリング(index は sidevar でカテゴリーを選択できるようにしたい。Home は最初 4 枚だけでもいいかもしれない)
+- edit, index のスタイリング(index は sidevar でカテゴリーを選択できるようにしたい。Home は最初 4
+  枚だけでもいいかもしれない)
 - page-title background-color は文字の上半分だけかぶるようにしたい
 
 ## 404
@@ -250,10 +259,10 @@ RAILS_ENV=production bin/rails s
 
 でも大丈夫そう。404 以外に使う status
 
-| エラー                        | 原因                                                                |
-| ----------------------------- | ------------------------------------------------------------------- |
+| エラー                           | 原因                                            |
+|-------------------------------|-----------------------------------------------|
 | **422 Unprocessable Entity**  | バリデーションエラー、Strong Parameters の制限、CSRF トークンエラー |
-| **500 Internal Server Error** | Ruby の例外、データベースエラー、環境変数未設定、API のタイムアウト |
+| **500 Internal Server Error** | Ruby の例外、データベースエラー、環境変数未設定、API のタイムアウト        |
 
 エラーログは `log/development.log` に蓄積される
 [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
@@ -267,21 +276,14 @@ page not found のカスタムと戦っていたら、思ったより時間が�
 
 # March 4th 💐
 
-**todo**
-
-- edit new の css
-- 画像の prereview[preview](https://zenn.dev/redheadchloe/articles/24e0fb357df71b)
-- map の挿入
-- footer の改良
-- 商品の crud が news に反映されるようにする。
-
 css でスタイリング。home の画像スクロール[画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
 
 ```html
+
 <li>
-  <%= link_to root_path + "#map" do %>
-  <i class="fa-solid fa-location-dot"></i>
-  <% end %>
+    <%= link_to root_path + "#map" do %>
+    <i class="fa-solid fa-location-dot"></i>
+    <% end %>
 </li>
 ```
 
@@ -289,11 +291,11 @@ css でスタイリング。home の画像スクロール[画像 scroll](https:/
 
 ```css
 a:hover {
-  color: #8b8b8b;
-  text-decoration: underline;
-  text-decoration-color: rgb(110, 180, 145);
-  text-underline-offset: 10px;
-  text-decoration-thickness: 3px;
+    color: #8b8b8b;
+    text-decoration: underline;
+    text-decoration-color: rgb(110, 180, 145);
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
 }
 ```
 
@@ -303,7 +305,7 @@ a:hover {
 言語切り替えはできれば dropdown からやりたい。
 
 [linear gradient](https://developer.mozilla.org/ja/docs/Web/CSS/gradient/linear-gradient)
-👆 面白そう　使わなかったけど
+👆 面白そう 使わなかったけど
 
 `>` を使うと一つ下の子供にのみ影響できるらしい
 画像のリサイズが難しい。。。
@@ -319,3 +321,40 @@ a:hover {
 sidebar + main で sidbar のリンクを触れたら`@current = @drinks`みたいな感じにしたかったけど、簡単には行かなかった。
 Ajax を使うか js で`onClick`で書くかなので、drinks,meals,etc それぞれのページを作った方が楽そう、、、
 眠いので一回眠る。
+
+## `application.html.erb`以外の基底 view を使用する方法
+
+```rb
+
+class UsersController < ApplicationController
+  layout "users" # app/views/layouts/users.html.erb を使用
+  # layout false  # レイアウトを適用しない
+end
+```
+
+今日あまり眠れなくて、なかなかやる気が出ない。discord を clone する講座が値引きされていたので買った。その前に少し modern js
+を勉強しておく。
+
+とりあえず 後やることの[list](./todo.md#L22)
+
+## March 5th 🍎
+
+少し jet brains 製品に触れてみる。mdはこちらの方が見やすいかもしれない、ただ表の枠線を除きたい。
+
+| keymap | action     |
+|--------|------------|
+| ^ ⇧ -  | Go forward |
+
+でできるようにした。
+jet brainsだと```⌘ [ ]```でできるので、vscodeでもこっちにしたほうが便利なのかもしれない。configがxmlであまり慣れない。とりあえずprettierを導入したい。
+
+| vscode        | JetBrains   | Action |
+|---------------|-------------|--------|
+| reload window | restart IDE | 再起動    |
+|               | ⌘⌥L         | format |
+|               |             |        |
+
+erbの他にhamlというものがあるらしい。
+
+
+

@@ -1,5 +1,19 @@
 <% provide(:title, "About") %>
-<%= link_to image_tag("about.jpeg", alt: "img", class: "coffee-image"), "#" %>
-<div class="about-text">
-  <p><%= I18n.t("about_text") %></p>
+<div class="about-container">
+  <%= link_to image_tag("about.jpeg", alt: "img", class: "coffee-image"), "#" %>
+  <div class="about-description">
+    <nav class="media-container">
+      <h3>Follow Us</h3>
+      <ul>
+        <i class="fa fa-house"></i>
+        <i class="fa fa-house"></i>
+        <i class="fa fa-house"></i>
+      </ul>
+    </nav>
+    <nav class="media-container">
+      <h3>Contact Us</h3>
+      sample@mail.org
+    </nav>
+    <p><%= I18n.t("about_text") %></p>
+  </div>
 </div>
