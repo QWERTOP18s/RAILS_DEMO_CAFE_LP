@@ -14,7 +14,7 @@
 - [starbacks](https://www.starbucks.co.jp/)
 - [mac](https://www.mcdonalds.co.jp/)
 
-- **TECH BLOG**
+**TECH BLOG**
 
 - [importmap](https://note.com/everyleaf/n/n0a5934373f12)
 - [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
@@ -414,3 +414,47 @@ gem 'google_maps_service'
 ## screenshot
 
 `⌘⌥I`検証モードから`⌘⇧P`で`full size screenshot`
+
+plurarizeはviewのclassに定義されているので、controllerから使うときは、ちょっと工夫が必要みたい。
+
+# Event model
+
+```sh
+bin/rails generate model Event date:date content:text
+bin/rails generate migration AddContentEnToEvents content_en:text
+
+bin/rails generate controller Events edit create destroy --skip-template
+```
+
+--skip-templateでもviewsのfileが作成されてしまう。
+
+modelの追加
+date: date
+content: text
+content_en: text 英語
+
+この編集はmodalでできるようにしたい。
+
+## モーダルとポップアップの違いの比較表
+
+| 項目                   | モーダル (Modal)                 | ポップアップ (Popup)               |
+| ---------------------- | -------------------------------- | ---------------------------------- |
+| **表示方法**           | ページ内にオーバーレイとして表示 | 新しいブラウザウィンドウとして表示 |
+| **親ウィンドウの操作** | ブロックされる                   | 操作可能                           |
+| **移動・リサイズ**     | 画面内で固定                     | ユーザーが自由に移動・リサイズ可能 |
+| **実装方法**           | HTML + CSS + JavaScript          | `window.open()` (JavaScript)       |
+| **使用例**             | フォーム入力・警告ダイアログ     | 広告・別ページの情報表示           |
+
+## scroll
+
+```css
+ul {
+  max-height: 200px; /* 最大高さを指定 */
+  overflow-y: auto; /* 縦方向にスクロール可能にする */
+  padding-right: 10px; /* スクロールバーが表示されるスペースを確保する */
+}
+```
+
+```sh
+alias glog='git log --oneline'
+```

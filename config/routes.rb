@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'events/edit'
+  get 'events/create'
+  get 'events/destroy'
   get '/errors/not_found', to: 'errors#not_found'
   get '/errors/internal_server_error', to: 'errors#internal_server_error'
 
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
 
   resources :products
+  resources :events, only: [:edit, :create, :destroy]
 
   # match "/404", to: "errors#not_found", via: :all
   # match "/500", to: "errors#internal_server_error", via: :all
