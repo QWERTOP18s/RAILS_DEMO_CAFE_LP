@@ -8,7 +8,7 @@
 }
 
 .media-container {
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   margin: 30px;
 }
@@ -16,6 +16,11 @@
   font-family: "Courier New", Courier, monospace;
 }
 
+.media-container ul {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+}
 .media-container i {
   font-size: 4rem;
 }

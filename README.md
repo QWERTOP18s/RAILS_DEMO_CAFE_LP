@@ -6,6 +6,8 @@ test: minitest
 
 [開発記録](./.md/./DEV.md)
 
+![img1](./.md/assets/product-search.png)
+
 ## セットアップ方法
 
 ### 依存関係のインストール
