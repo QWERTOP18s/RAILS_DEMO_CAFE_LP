@@ -24,7 +24,7 @@ drinkNames.each do |name|
     name: name,
     cost: 100,
     price: 400,
-    description: "drink",
+    description: "厳選した豆を使用した、香り高く深みのあるコーヒー。まろやかな味わいと豊かなアロマが、毎日のひとときを贅沢に演出します。",
     category: "drink",
   )
   attachRef(p, name)
@@ -36,7 +36,7 @@ mealNames.each do |name|
     name:name,
     cost: 500,
     price: 1000,
-    description: "meal",
+    description: "ふわっと軽い生地に、甘さ控えめなクリームが絶妙。口に入れるたび広がるリッチな味わいで、贅沢なひとときをお楽しみいただけます。",
     category: "meal",
   )
   attachRef(p, name)
@@ -48,7 +48,7 @@ etcNames.each do |name|
     name: name,
     cost: 1000,
     price: 1000,
-    description: "etc",
+    description: "厳選した豆を使用した、香り高く深みのあるコーヒー。まろやかな味わいと豊かなアロマが、毎日のひとときを贅沢に演出します。",
     category: "etc",
   )
   attachRef(p, name)
@@ -60,7 +60,7 @@ Product.create!(
   name: "nosrc",
   cost: 1000,
   price: 1000,
-  description: "no reference",
+  description: "ふわっと軽い生地に、甘さ控えめなクリームが絶妙。口に入れるたび広がるリッチな味わいで、贅沢なひとときをお楽しみいただけます。",
   category: "meal",
 )
 

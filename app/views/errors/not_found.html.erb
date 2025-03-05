@@ -1,3 +1,5 @@
 <% provide(:title, "404 Not Found") %>
-<h2> <%= I18n.t('errors.messages.not_found') %></h2>
-<%= link_to  I18n.t('errors.messages.back_to_home'), root_path %>
+<div class="error-container">
+  <h2> <%= I18n.t('errors.messages.not_found') %></h2>
+  <%= link_to  I18n.t('errors.messages.back_to_home'), root_path %>
+</div>

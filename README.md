@@ -53,3 +53,10 @@ rails test
 ```bash
 rubocop
 ```
+
+### debug情報を表示する
+
+```rb
+# config/environments/development.rb
+config.consider_all_requests_local = true
+```

@@ -3,14 +3,13 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
     if params[:search].present?
-      @current = Product.where("name LIKE ?", "%#{params[:search]}%")
+      @current = Product.where('name LIKE ?', "%#{params[:search]}%")
       @category = "#{helpers.pluralize(@current.count, 'result')} found"
     else
       @category = params[:category] || 'drink'
       @current = Product.where(category: @category)
     end
   end
-  
 
   def show
   end

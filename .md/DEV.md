@@ -9,7 +9,7 @@
 **DESIGN**
 
 - https://webdesignclip.com/
-- [bach-kaffe](https://www.buch-kaffee.co.jp)
+- [bach-kaffe](https://www.bach-kaffee.co.jp)
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
 - [mac](https://www.mcdonalds.co.jp/)
@@ -382,3 +382,13 @@ def index
   else
   ...
 ```
+
+## March 6th
+
+## detail
+
+```rb
+<%= number_to_currency(@product.price.floor, unit: "¥", separator: ".", delimiter: ",", precision: 0) %>
+```
+
+三桁区切りで,を入れてくれる便利かもしれない
