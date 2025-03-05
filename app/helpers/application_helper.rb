@@ -7,4 +7,8 @@ module ApplicationHelper
       "#{page_title} | #{base_title}"
     end
   end
+
+  def my_pluralize(count, singular, plural)
+    count == 1 ? "#{count} #{singular}" : "#{count} #{plural}"
+  end
 end

@@ -7,6 +7,10 @@ ja:
       internal_server_error: "申し訳ありませんが、サーバーでエラーが発生しました"
       back_to_home: "ホームに戻る"
 
+  products:
+    destroy:
+      success: "商品が正常に削除されました"
+
   views:
     messages:
       delete_confirm: "本当に削除しますか？"

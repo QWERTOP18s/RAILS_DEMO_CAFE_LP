@@ -408,3 +408,9 @@ gem 'dotenv-rails'
 # Gemfile
 gem 'google_maps_service'
 ```
+
+色々とできてきた。deleteが効かなくなってしまった。
+
+## screenshot
+
+`⌘⌥I`検証モードから`⌘⇧P`で`full size screenshot`

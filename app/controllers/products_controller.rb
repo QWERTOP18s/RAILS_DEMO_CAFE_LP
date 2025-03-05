@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   def index
     if params[:search].present?
       @current = Product.where('name LIKE ?', "%#{params[:search]}%")
-      @category = "#{helpers.pluralize(@current.count, 'result')} found"
+      # pluralizeはerbでのみ使用可能なので、自己定義
+      @category = "#{helpers.my_pluralize(@current.count, 'result', 'results')} found"
     else
       @category = params[:category] || 'drink'
       @current = Product.where(category: @category)
@@ -43,7 +44,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url
+    redirect_to products_url, flash: { success: I18n.t('products.destroy.success') }
   end
 
   private
