@@ -9,6 +9,7 @@
 **DESIGN**
 
 - https://webdesignclip.com/
+- [bach-kaffe](https://www.buch-kaffee.co.jp)
 - [tullys](https://www.tullys.co.jp/)
 - [starbacks](https://www.starbucks.co.jp/)
 - [mac](https://www.mcdonalds.co.jp/)
@@ -98,9 +99,7 @@ end
 title は SEO 対策につけておいた方が良さそう
 
 ```css
-object-fit: cover
-
-; /* 縦横比を保ちながら、親要素に合わせてトリミング */
+object-fit: cover; /* 縦横比を保ちながら、親要素に合わせてトリミング */
 ```
 
 ## icon
@@ -222,11 +221,11 @@ bin/rails generate integration_test product_edit
 bin/rails generate integration_test product_delete
 ```
 
-| アクション       | HTTP メソッド | 確認方法                                            |
-|-------------|-----------|-------------------------------------------------|
-| new/create  | POST      | assert_difference 'Product.count'で個数の変化を確認      |
-| edit/update | PATCH     | assert_equal @product.reload.属性名で更新後の値を確認       |
-| destroy     | DELETE    | assert_difference 'Product.count', -1 で個数の減少を確認 |
+| アクション  | HTTP メソッド | 確認方法                                                 |
+| ----------- | ------------- | -------------------------------------------------------- |
+| new/create  | POST          | assert_difference 'Product.count'で個数の変化を確認      |
+| edit/update | PATCH         | assert_equal @product.reload.属性名で更新後の値を確認    |
+| destroy     | DELETE        | assert_difference 'Product.count', -1 で個数の減少を確認 |
 
 github で pull_request する前に`act pull_request`で local で検証できるみたい。
 pull_request は最新コミットが反映されらしい、、、ｼﾗﾅｶｯﾀ
@@ -259,10 +258,10 @@ RAILS_ENV=production bin/rails s
 
 でも大丈夫そう。404 以外に使う status
 
-| エラー                           | 原因                                            |
-|-------------------------------|-----------------------------------------------|
+| エラー                        | 原因                                                                |
+| ----------------------------- | ------------------------------------------------------------------- |
 | **422 Unprocessable Entity**  | バリデーションエラー、Strong Parameters の制限、CSRF トークンエラー |
-| **500 Internal Server Error** | Ruby の例外、データベースエラー、環境変数未設定、API のタイムアウト        |
+| **500 Internal Server Error** | Ruby の例外、データベースエラー、環境変数未設定、API のタイムアウト |
 
 エラーログは `log/development.log` に蓄積される
 [custom 404 500](https://qiita.com/YutoYasunaga/items/7c2e6962966677610d39)
@@ -279,11 +278,10 @@ page not found のカスタムと戦っていたら、思ったより時間が�
 css でスタイリング。home の画像スクロール[画像 scroll](https://rita-plus.com/blog/css-animation-scroll-infinity/)
 
 ```html
-
 <li>
-    <%= link_to root_path + "#map" do %>
-    <i class="fa-solid fa-location-dot"></i>
-    <% end %>
+  <%= link_to root_path + "#map" do %>
+  <i class="fa-solid fa-location-dot"></i>
+  <% end %>
 </li>
 ```
 
@@ -291,11 +289,11 @@ css でスタイリング。home の画像スクロール[画像 scroll](https:/
 
 ```css
 a:hover {
-    color: #8b8b8b;
-    text-decoration: underline;
-    text-decoration-color: rgb(110, 180, 145);
-    text-underline-offset: 10px;
-    text-decoration-thickness: 3px;
+  color: #8b8b8b;
+  text-decoration: underline;
+  text-decoration-color: rgb(110, 180, 145);
+  text-underline-offset: 10px;
+  text-decoration-thickness: 3px;
 }
 ```
 
@@ -342,19 +340,45 @@ end
 少し jet brains 製品に触れてみる。mdはこちらの方が見やすいかもしれない、ただ表の枠線を除きたい。
 
 | keymap | action     |
-|--------|------------|
+| ------ | ---------- |
 | ^ ⇧ -  | Go forward |
 
 でできるようにした。
-jet brainsだと```⌘ [ ]```でできるので、vscodeでもこっちにしたほうが便利なのかもしれない。configがxmlであまり慣れない。とりあえずprettierを導入したい。
+jet brainsだと`⌘ [ ]`でできるので、vscodeでもこっちにしたほうが便利なのかもしれない。configがxmlであまり慣れない。とりあえずprettierを導入したい。
 
 | vscode        | JetBrains   | Action |
-|---------------|-------------|--------|
-| reload window | restart IDE | 再起動    |
+| ------------- | ----------- | ------ |
+| reload window | restart IDE | 再起動 |
 |               | ⌘⌥L         | format |
 |               |             |        |
 
 erbの他にhamlというものがあるらしい。
+products-indexは、`@current`によってviewが切り替わるようにしたい。
+`@current.category`のようにアクセスしようとしていて、かなり悩んだ。`@current`は配列なのでcategoryもインスタンス変数として持つことにした。
 
+```rb
+def index
+    @category = params[:category] || 'drinks'
+    @current = Product.where(category: @category)
+end
 
+# 呼び出し側
+<li><%= link_to "Drinks", products_path(category: 'drinks')%></li>
+```
 
+` <%= @current.count%>`debugに便利かもしれない。もっと細かくminitestを書く若しくはdebuggerを使った方がいいかも。
+parameterについて理解が足りていなかったけど、jsの`onClick`みたいなものがない代わりにparameterを使って関数を発火できた。
+
+## 検索機能
+
+とりあえずnameだけ検索、価格とかで検索できたら面白そう。検索boxのcssがあまり納得いっていないかもしれない。
+部分検索はsqlのlikeを使えばいい、ここら辺は生sqlをもっと勉強した方が良さそう。複数形にも一応対応
+
+```rb
+def index
+  if params[:search].present?
+        @current = Product.where("name LIKE ?", "%#{params[:search]}%")
+        @category = "#{helpers.pluralize(@current.count, 'result')} found"
+  else
+  ...
+```
