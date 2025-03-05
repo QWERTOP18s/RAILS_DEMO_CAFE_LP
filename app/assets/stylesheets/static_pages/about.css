@@ -9,11 +9,13 @@
 
 .media-container {
   /* display: flex; */
-  justify-content: space-between;
-  margin: 30px;
+  display: grid;
+  justify-content: center;
+  margin: 20px;
 }
 .media-container h3 {
   font-family: "Courier New", Courier, monospace;
+  /* background-color: #f0f0f0; */
 }
 
 .media-container ul {
@@ -26,6 +28,6 @@
 }
 
 .about-description p {
-  margin: 30px;
-  padding-top: 30px;
+  margin: 20px;
+  padding-left: 20px;
 }

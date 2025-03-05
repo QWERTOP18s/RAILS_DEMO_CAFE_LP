@@ -38,6 +38,10 @@ en:
       internal_server_error: "We're sorry, but something went wrong"
       back_to_home: "Back to Home"
 
+  products:
+    destroy:
+      success: "Product was successfully destroyed."
+
   views:
     messages:
       delete_confirm: "You sure?"
