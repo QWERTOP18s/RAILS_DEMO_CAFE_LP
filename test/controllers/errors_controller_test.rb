@@ -9,7 +9,6 @@ class ErrorsControllerTest < ActionDispatch::IntegrationTest
     assert_template 'errors/not_found'
   end
 
-  # 500エラーのテスト
   test 'should handle internal error with 500 page' do
     # テスト用のルートを追加
     Rails.application.routes.draw do
@@ -26,7 +25,6 @@ class ErrorsControllerTest < ActionDispatch::IntegrationTest
     assert_template 'errors/internal_server_error'
   end
 
-  # エラーページが正しく表示されることをテスト
   test 'should display error pages directly' do
     get errors_not_found_path
     assert_response :not_found
@@ -38,7 +36,6 @@ class ErrorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   teardown do
-    # テスト後にルートをリセット
     Rails.application.reload_routes!
   end
 end

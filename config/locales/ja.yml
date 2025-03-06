@@ -10,6 +10,18 @@ ja:
   products:
     destroy:
       success: "商品が正常に削除されました"
+    create:
+      success: "商品が正常に作成されました"
+    update:
+      success: "商品が正常に更新されました"
+
+  events:
+    destroy:
+      success: "イベントが正常に削除されました"
+    create:
+      success: "イベントが正常に作成されました"
+    update:
+      success: "イベントが正常に更新されました"
 
   views:
     messages:

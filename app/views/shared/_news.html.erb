@@ -1,7 +1,11 @@
 <h2 class="home-title">WHAT'S NEW</h2>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
 <div id="news-list">
   <ul class="events-list">
     <% @events.each do |event| %>
+      <!-- <%= render "events/form", event: event %> -->
       <li class="events-item">
         <div class="events-item__date">
           <%= event.date.strftime("%Y/%m/%d") %>
@@ -13,16 +17,14 @@
           <%= link_to "#" do %>
             <i class="fa-solid fa-sliders"></i>
           <% end %>
-          <%= link_to "#" do %>
-            <i class="fa-solid fa-trash"></i>
+          <%= link_to event, data: { turbo_method: :delete, turbo_confirm: I18n.t("views.messages.delete_confirm") }, class: "fa-solid fa-trash" do %>
           <% end %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <div class="news-create">
-    <%= link_to "#" do %>
-      Create
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="news-create">
+      <%= link_to "#" do %>
+        Create
+      <% end %>
+    </div>
   </div>
-</div>

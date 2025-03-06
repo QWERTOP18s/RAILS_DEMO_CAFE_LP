@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
     @product.uid ||= SecureRandom.uuid
     @product.ref.attach(params[:product][:ref])
     if @product.save
-      redirect_to @product
+      redirect_to @product, flash: { success: I18n.t('products.create.success') }
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
   def update
     @product.ref.attach(params[:product][:ref])
     if @product.update(product_params)
-      redirect_to @product
+      redirect_to @product, flash: { success: I18n.t('products.update.success') }
     else
       render :edit, status: :unprocessable_entity
     end
