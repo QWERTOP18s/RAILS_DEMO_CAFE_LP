@@ -4,6 +4,8 @@ class StaticPagesController < ApplicationController
                         .where.not(active_storage_attachments: { id: nil })
                         .order('RANDOM()')
                         .limit(3)
+
+    @events = Event.order(date: :desc)
   end
 
   def about

@@ -64,5 +64,39 @@ Product.create!(
   category: "meal",
 )
 
+Event.create!(
+  date: Date.new(2025, 3, 1),
+  content: "制作開始",
+  content_en: "Start development",
+)
 
+Event.create!(
+  date: Date.new(2025, 3, 2),
+  content: "画像投稿の実装",
+  content_en: "Implement image upload",
+)
+
+Event.create!(
+  date: Date.new(2025, 3, 3),
+  content: "404 500 エラーページの実装",
+  content_en: "Implement 404 500 error page",
+)
+
+Event.create!(
+  date: Date.new(2025, 3, 4),
+  content: "cssを頑張った",
+  content_en: "Implement css",
+)
+
+Event.create!(
+  date: Date.new(2025, 3, 6),
+  content: "mapの実装",
+  content_en: "Implement map",
+)
+
+Event.create!(
+  date: Date.new(2025, 3, 6),
+  content: "Eventモデルの作成",
+  content_en: "Create Event model",
+)
 

@@ -1,21 +1,30 @@
 <h2 class="home-title">WHAT'S NEW</h2>
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
 <div id="news-list">
-  <dl>
-    <dt>2025/03/01</dt>
-    <dd>
-      制作開始
-    </dd>
-    <dt>2025/03/02</dt>
-    <dd>
-      画像投稿の実装
-    </dd>
-    <dt>2025/03/03</dt>
-    <dd>
-      404 500 エラーページの実装
-    </dd>
-    <dt>2025/03/04</dt>
-    <dd>
-      edit createのcss
-    </dd>
-  </dl>
-</div>
+  <ul class="events-list">
+    <% @events.each do |event| %>
+      <!-- <%= render "events/form", event: event %> -->
+      <li class="events-item">
+        <div class="events-item__date">
+          <%= event.date.strftime("%Y/%m/%d") %>
+        </div>
+        <div class="events-item__content">
+          <%= event.content %>
+        </div>
+        <div class="events-item__edit-delete">
+          <%= link_to "#" do %>
+            <i class="fa-solid fa-sliders"></i>
+          <% end %>
+          <%= link_to event, data: { turbo_method: :delete, turbo_confirm: I18n.t("views.messages.delete_confirm") }, class: "fa-solid fa-trash" do %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="news-create">
+      <%= link_to "#" do %>
+        Create
+      <% end %>
+    </div>
+  </div>

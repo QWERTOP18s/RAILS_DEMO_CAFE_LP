@@ -40,7 +40,19 @@ en:
 
   products:
     destroy:
-      success: "Product was successfully destroyed."
+      success: "Product was successfully deleted."
+    create:
+      success: "Product was successfully created."
+    update:
+      success: "Product was successfully updated."
+
+  events:
+    destroy:
+      success: "Event was successfully deleted."
+    create:
+      success: "Event was successfully created."
+    update:
+      success: "Event was successfully updated."
 
   views:
     messages:
